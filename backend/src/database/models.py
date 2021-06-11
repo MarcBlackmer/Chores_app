@@ -30,25 +30,25 @@ def setup_db(app, database_path=DB_PATH):
 class Categories(db.Model):
     __tablename__ = 'categories'
 
-    id = db.Column(db.Integer(5), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     cat_name = db.Column(db.String(20), unique=True, nullable=False)
 
 
 class Users(db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer(3), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50), unique=True, nullable=False)
 
 
 class Chores(db.Model):
     __tablename__ = 'chores'
 
-    id = db.Column(db.Integer(5), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     chore_name = db.Column(db.String(150), unique=True, nullable=False)
     recurrence = db.Column(db.String(15), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(
         'categories.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     status = db.Column(db.String(15), nullable=False)
-    points = db.Column(db.Integer(3), nullable=False)
+    points = db.Column(db.Integer, nullable=False)
