@@ -1,6 +1,6 @@
 import os
-from sqlalchemy importdb.Column, db.String, db.Integer
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, String, Integer
 from dotenv import load_dotenv, find_dotenv
 import json
 
