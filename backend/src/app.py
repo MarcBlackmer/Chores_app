@@ -15,6 +15,9 @@ def create_app(app):
     # Set up the app and create the database
     app = Flask(__name__)
     setup_db(app)
+
+    migrate = Migrate(app, db)
+
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     @app.after_request
