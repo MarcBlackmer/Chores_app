@@ -35,4 +35,55 @@ def create_app(app):
             'message': 'Nothing to see here - yet'
         }), 200
 
+    @app.route('/users', methods=['GET'])
+    def get_users():
+        error = False
+        try:
+            users = (
+                Users.query
+                .order_by(Users.id)
+                .all()
+            )
+
+            user_list = {
+                user.user_name: user.user_role for user in users
+            }
+
+            if len(users):
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'users': user_list
+                })
+            else:
+                abort(422)
+
+        except Exception as e:
+            print(e)
+            error = True
+
+    @app.route('/users', methods=['POST'])
+    def add_user():
+        error = False
+        try:
+            data = request.get_json()
+            new_user = data['user_name'].strip()
+            user_role = data['user_role'].strip()
+            user_acct = Users(
+                user_name=new_user,
+                user_role=user_role
+            )
+
+            user_acct.insert()
+
+            return jsonify({
+                'status_code': 200,
+                'success': True,
+                'message': 'That may have worked. Who knows?'
+            })
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app

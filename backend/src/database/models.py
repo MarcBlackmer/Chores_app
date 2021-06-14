@@ -39,6 +39,11 @@ class Users(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50), unique=True, nullable=False)
+    user_role = db.Column(db.String(10), nullable=False)
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class Chores(db.Model):
