@@ -35,6 +35,10 @@ def create_app(app):
             'message': 'Nothing to see here - yet'
         }), 200
 
+    '''
+    User-related endpoints
+        '''
+
     @app.route('/users', methods=['GET'])
     def get_users():
         error = False
@@ -80,6 +84,55 @@ def create_app(app):
                 'status_code': 200,
                 'success': True,
                 'message': 'That may have worked. Who knows?'
+            })
+
+        except Exception as e:
+            print(e)
+            error = True
+
+    '''
+    Category-related endpoints
+        '''
+
+    @app.route('/categories', methods=['GET'])
+    def get_categories():
+        error = False
+        try:
+            categories = (
+                Categories.query
+                .order_by(Categories.id)
+                .all()
+            )
+
+            if len(categories):
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'categories': [category.cat_name for category in categories]
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
+    @app.route('/categories', methods=['POST'])
+    def add_category():
+        error = False
+        try:
+            data = request.get_json()
+            cat_name = data['cat_name'].strip()
+            new_cat = Categories(
+                cat_name=cat_name
+            )
+
+            new_cat.insert()
+
+            return jsonify({
+                'status_code': 200,
+                'success': True,
+                'message': 'Created new category'
             })
 
         except Exception as e:

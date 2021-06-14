@@ -33,6 +33,16 @@ class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cat_name = db.Column(db.String(20), unique=True, nullable=False)
 
+    def __init__(self, cat_name):
+        self.cat_name = cat_name
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'<ID: { self.id }, Category: { self.cat_name }>'
+
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -41,9 +51,16 @@ class Users(db.Model):
     user_name = db.Column(db.String(50), unique=True, nullable=False)
     user_role = db.Column(db.String(10), nullable=False)
 
+    def __init__(self, user_name, user_role):
+        self.user_name = user_name
+        self.user_role = user_role
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
+
+    def __repr__(self):
+        return f'<ID: { self.id }, Name: { self.user_name }, Role: { self.user_role }>'
 
 
 class Chores(db.Model):
@@ -57,3 +74,16 @@ class Chores(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     status = db.Column(db.String(15), nullable=False)
     points = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, chore_name, recurrence, category_id, user_id, status, points):
+        self.chore_name = chore_name
+        self.recurrence = recurrence
+        self.category_id = category_id
+        self.user_id = user_id
+        self.status = status
+        self.points = points
+
+    def __repr__(self):
+        return f'<ID: { self.id }, Name: { self.chore_name }, \
+        Schedule: { self.recurrence }, Status { self.status } \
+        Points: { self.points }>'
