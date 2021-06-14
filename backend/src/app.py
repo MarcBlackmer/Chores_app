@@ -139,4 +139,27 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/categories/<id>', methods=['PATCH'])
+    def update_category(id):
+        error = False
+        try:
+            data = request.get_json()
+            category = Categories.query.get(id)
+
+            if category:
+                category.cat_name = data.get('cat_name').strip()
+                category.update()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'Category updated'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app
