@@ -231,6 +231,39 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/chores', methods=['POST'])
+    def add_chore():
+        error = False
+        try:
+            data = request.get_json()
+            chore_name = data['chore_name'].strip()
+            recurrence = data['recurrence'].strip()
+            category_id = data['category_id']
+            user_id = data['user_id']
+            status = data['status'].strip()
+            points = data['points']
+
+            new_chore = Chores(
+                chore_name=chore_name,
+                recurrence=recurrence,
+                category_id=category_id,
+                user_id=user_id,
+                status=status,
+                points=points
+            )
+
+            new_chore.insert()
+
+            return jsonify({
+                'status_code': 200,
+                'success': True,
+                'message': 'Created new chore'
+            })
+
+        except Exception as e:
+            print(e)
+            error = True
+
     '''
     Chore-related endpoints
         '''
