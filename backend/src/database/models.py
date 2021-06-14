@@ -66,6 +66,13 @@ class Users(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def __repr__(self):
         return f'<ID: { self.id }, Name: { self.user_name }, Role: { self.user_role }>'
 

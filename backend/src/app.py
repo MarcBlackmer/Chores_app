@@ -90,6 +90,53 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/users/<id>', methods=['PATCH'])
+    def update_user(id):
+        error = False
+        try:
+            data = request.get_json()
+            user = Users.query.get(id)
+
+            if user:
+                user.user_name = data.get('user_name').strip()
+                user.user_role = data.get('user_role').strip()
+
+                user.update()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'User updated'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
+    @app.route('/users/<id>', methods=['DELETE'])
+    def delete_user(id):
+        error = False
+        try:
+            data = request.get_json()
+            user = Users.query.get(id)
+
+            if user:
+                user.delete()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'User deleted'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     '''
     Category-related endpoints
         '''
