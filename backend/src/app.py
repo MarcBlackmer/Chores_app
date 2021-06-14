@@ -295,4 +295,33 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/chores/<id>', methods=['PATCH'])
+    def update_chore(id):
+        error = False
+        try:
+            data = request.get_json()
+            chore = Chores.query.get(id)
+
+            if chore:
+                chore.chore_name = data.get('chore_name').strip()
+                chore.recurrence = data.get('recurrence').strip()
+                chore.category_id = data.get('category_id')
+                chore.user_id = data.get('user_id')
+                chore.status = data.get('status').strip()
+                chore.points = data.get('points')
+
+                chore.update()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'Chore updated'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app
