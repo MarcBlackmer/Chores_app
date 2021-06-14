@@ -231,4 +231,35 @@ def create_app(app):
             print(e)
             error = True
 
+    '''
+    Chore-related endpoints
+        '''
+
+    @app.route('/chores', methods=['GET'])
+    def get_chores():
+        error = False
+        try:
+            chores = (
+                Chores.query
+                .order_by(Chores.id)
+                .all()
+            )
+
+            chore_list = {
+                chore.chore_name: chore.status for chore in chores
+            }
+
+            if len(chores):
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'chores': chore_list
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app
