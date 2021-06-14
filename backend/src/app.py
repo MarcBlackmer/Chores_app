@@ -162,4 +162,26 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/categories/<id>', methods=['DELETE'])
+    def delete_category(id):
+        error = False
+        try:
+            data = request.get_json()
+            category = Categories.query.get(id)
+
+            if category:
+                category.delete()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'Category deleted'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app
