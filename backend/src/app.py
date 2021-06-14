@@ -324,4 +324,26 @@ def create_app(app):
             print(e)
             error = True
 
+    @app.route('/chores/<id>', methods=['DELETE'])
+    def delete_chore(id):
+        error = False
+        try:
+            data = request.get_json()
+            chore = Chores.query.get(id)
+
+            if chore:
+                chore.delete()
+
+                return jsonify({
+                    'status_code': 200,
+                    'success': True,
+                    'message': 'Chore deleted'
+                })
+            else:
+                abort(404)
+
+        except Exception as e:
+            print(e)
+            error = True
+
     return app
