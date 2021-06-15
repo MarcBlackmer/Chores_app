@@ -69,6 +69,7 @@ def create_app(app):
             error = True
 
     @app.route('/users', methods=['POST'])
+    @requires_auth('post:users')
     def add_user():
         error = False
         try:
@@ -93,6 +94,7 @@ def create_app(app):
             error = True
 
     @app.route('/users/<id>', methods=['PATCH'])
+    @requires_auth('patch:users')
     def update_user(id):
         error = False
         try:
@@ -118,6 +120,7 @@ def create_app(app):
             error = True
 
     @app.route('/users/<id>', methods=['DELETE'])
+    @requires_auth('delete:users')
     def delete_user(id):
         error = False
         try:
@@ -144,6 +147,7 @@ def create_app(app):
         '''
 
     @app.route('/categories', methods=['GET'])
+    @requires_auth('get:categories')
     def get_categories():
         error = False
         try:
@@ -167,6 +171,7 @@ def create_app(app):
             error = True
 
     @app.route('/categories', methods=['POST'])
+    @requires_auth('post:categories')
     def add_category():
         error = False
         try:
@@ -189,6 +194,7 @@ def create_app(app):
             error = True
 
     @app.route('/categories/<id>', methods=['PATCH'])
+    @requires_auth('patch:categories')
     def update_category(id):
         error = False
         try:
@@ -212,6 +218,7 @@ def create_app(app):
             error = True
 
     @app.route('/categories/<id>', methods=['DELETE'])
+    @requires_auth('delete:categories')
     def delete_category(id):
         error = False
         try:
@@ -238,6 +245,7 @@ def create_app(app):
         '''
 
     @app.route('/chores', methods=['GET'])
+    @requires_auth('get:chores')
     def get_chores():
         error = False
         try:
@@ -265,6 +273,7 @@ def create_app(app):
             error = True
 
     @app.route('/chores', methods=['POST'])
+    @requires_auth('post:chores')
     def add_chore():
         error = False
         try:
@@ -298,6 +307,7 @@ def create_app(app):
             error = True
 
     @app.route('/chores/<id>', methods=['PATCH'])
+    @requires_auth('patch:chores')
     def update_chore(id):
         error = False
         try:
@@ -327,6 +337,7 @@ def create_app(app):
             error = True
 
     @app.route('/chores/<id>', methods=['DELETE'])
+    @requires_auth('delete:chores')
     def delete_chore(id):
         error = False
         try:
