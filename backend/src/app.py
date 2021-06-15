@@ -6,6 +6,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv, find_dotenv
 
 from .database.models import setup_db, db, Categories, Users, Chores
+from .auth.auth import AuthError, requires_auth
 
 
 def create_app(app):
@@ -40,7 +41,8 @@ def create_app(app):
         '''
 
     @app.route('/users', methods=['GET'])
-    def get_users():
+    @requires_auth('get:users')
+    def get_users(f):
         error = False
         try:
             users = (
@@ -83,7 +85,7 @@ def create_app(app):
             return jsonify({
                 'status_code': 200,
                 'success': True,
-                'message': 'That may have worked. Who knows?'
+                'message': 'User created'
             })
 
         except Exception as e:
