@@ -70,7 +70,7 @@ def create_app(app):
 
     @app.route('/users', methods=['POST'])
     @requires_auth('post:users')
-    def add_user():
+    def add_user(f):
         error = False
         try:
             data = request.get_json()
@@ -95,7 +95,7 @@ def create_app(app):
 
     @app.route('/users/<id>', methods=['PATCH'])
     @requires_auth('patch:users')
-    def update_user(id):
+    def update_user(f, id):
         error = False
         try:
             data = request.get_json()
@@ -121,7 +121,7 @@ def create_app(app):
 
     @app.route('/users/<id>', methods=['DELETE'])
     @requires_auth('delete:users')
-    def delete_user(id):
+    def delete_user(f, id):
         error = False
         try:
             data = request.get_json()
@@ -148,7 +148,7 @@ def create_app(app):
 
     @app.route('/categories', methods=['GET'])
     @requires_auth('get:categories')
-    def get_categories():
+    def get_categories(f):
         error = False
         try:
             categories = (
@@ -172,7 +172,7 @@ def create_app(app):
 
     @app.route('/categories', methods=['POST'])
     @requires_auth('post:categories')
-    def add_category():
+    def add_category(f):
         error = False
         try:
             data = request.get_json()
@@ -195,7 +195,7 @@ def create_app(app):
 
     @app.route('/categories/<id>', methods=['PATCH'])
     @requires_auth('patch:categories')
-    def update_category(id):
+    def update_category(f, id):
         error = False
         try:
             data = request.get_json()
@@ -219,7 +219,7 @@ def create_app(app):
 
     @app.route('/categories/<id>', methods=['DELETE'])
     @requires_auth('delete:categories')
-    def delete_category(id):
+    def delete_category(f, id):
         error = False
         try:
             data = request.get_json()
@@ -246,7 +246,7 @@ def create_app(app):
 
     @app.route('/chores', methods=['GET'])
     @requires_auth('get:chores')
-    def get_chores():
+    def get_chores(f):
         error = False
         try:
             chores = (
@@ -274,7 +274,7 @@ def create_app(app):
 
     @app.route('/chores', methods=['POST'])
     @requires_auth('post:chores')
-    def add_chore():
+    def add_chore(f):
         error = False
         try:
             data = request.get_json()
@@ -308,7 +308,7 @@ def create_app(app):
 
     @app.route('/chores/<id>', methods=['PATCH'])
     @requires_auth('patch:chores')
-    def update_chore(id):
+    def update_chore(f, id):
         error = False
         try:
             data = request.get_json()
@@ -338,7 +338,7 @@ def create_app(app):
 
     @app.route('/chores/<id>', methods=['DELETE'])
     @requires_auth('delete:chores')
-    def delete_chore(id):
+    def delete_chore(f, id):
         error = False
         try:
             data = request.get_json()
