@@ -43,7 +43,6 @@ def create_app(app):
     @app.route('/users', methods=['GET'])
     @requires_auth('get:users')
     def get_users(f):
-        error = False
         try:
             users = (
                 Users.query
@@ -66,8 +65,7 @@ def create_app(app):
 
         except Exception as e:
             print(e)
-            error = True
-            abort(422)
+            abort(404)
 
     @app.route('/users', methods=['POST'])
     @requires_auth('post:users')
@@ -91,8 +89,8 @@ def create_app(app):
             })
 
         except Exception as e:
-            print(e)
             error = True
+            print(e)
             abort(422)
 
     @app.route('/users/<id>', methods=['PATCH'])
@@ -114,13 +112,11 @@ def create_app(app):
                     'success': True,
                     'message': 'User updated'
                 })
-            else:
-                abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     @app.route('/users/<id>', methods=['DELETE'])
     @requires_auth('delete:users')
@@ -142,9 +138,9 @@ def create_app(app):
                 abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     '''
     Category-related endpoints
@@ -170,10 +166,10 @@ def create_app(app):
             else:
                 abort(404)
 
-        except Exception as e:
-            print(e)
+        except TypeError as e:
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     @app.route('/categories', methods=['POST'])
     @requires_auth('post:categories')
@@ -195,8 +191,8 @@ def create_app(app):
             })
 
         except Exception as e:
-            print(e)
             error = True
+            print(e)
             abort(422)
 
     @app.route('/categories/<id>', methods=['PATCH'])
@@ -216,13 +212,11 @@ def create_app(app):
                     'success': True,
                     'message': 'Category updated'
                 })
-            else:
-                abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     @app.route('/categories/<id>', methods=['DELETE'])
     @requires_auth('delete:categories')
@@ -244,9 +238,9 @@ def create_app(app):
                 abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     '''
     Chore-related endpoints
@@ -276,10 +270,10 @@ def create_app(app):
             else:
                 abort(404)
 
-        except Exception as e:
-            print(e)
+        except TypeError as e:
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     @app.route('/chores', methods=['POST'])
     @requires_auth('post:chores')
@@ -312,8 +306,8 @@ def create_app(app):
             })
 
         except Exception as e:
-            print(e)
             error = True
+            print(e)
             abort(422)
 
     @app.route('/chores/<id>', methods=['PATCH'])
@@ -339,13 +333,11 @@ def create_app(app):
                     'success': True,
                     'message': 'Chore updated'
                 })
-            else:
-                abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     @app.route('/chores/<id>', methods=['DELETE'])
     @requires_auth('delete:chores')
@@ -367,9 +359,9 @@ def create_app(app):
                 abort(404)
 
         except Exception as e:
-            print(e)
             error = True
-            abort(422)
+            print(e)
+            abort(404)
 
     '''
     Erorr handlers
@@ -384,12 +376,20 @@ def create_app(app):
         }), 404
 
     @app.errorhandler(422)
-    def not_found_error(error):
+    def not_processed_error(error):
         return jsonify({
             'success': False,
             'status_code': 422,
             'message': 'Your request could not be processed'
         }), 422
+
+    @app.errorhandler(500)
+    def server_error(error):
+        return jsonify({
+            'success': False,
+            'status_code': 500,
+            'message': 'The server did not understand your request'
+        }), 500
 
     @app.errorhandler(AuthError)
     def auth_error(error):
