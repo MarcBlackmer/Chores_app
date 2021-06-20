@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -31,10 +31,7 @@ def create_app(app):
 
     @app.route('/', methods=['GET'])
     def index():
-        return jsonify({
-            'success': True,
-            'message': 'Nothing to see here - yet'
-        }), 200
+        return render_template('pages/home.html')
 
     '''
     User-related endpoints
