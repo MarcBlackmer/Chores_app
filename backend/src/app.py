@@ -62,11 +62,12 @@ def create_app(app):
                     'users': user_list
                 })
             else:
-                abort(422)
+                abort(404)
 
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/users', methods=['POST'])
     @requires_auth('post:users')
@@ -84,7 +85,7 @@ def create_app(app):
             user_acct.insert()
 
             return jsonify({
-                'status_code': 200,
+                'status_code': 201,
                 'success': True,
                 'message': 'User created'
             })
@@ -92,6 +93,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/users/<id>', methods=['PATCH'])
     @requires_auth('patch:users')
@@ -118,6 +120,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/users/<id>', methods=['DELETE'])
     @requires_auth('delete:users')
@@ -141,6 +144,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     '''
     Category-related endpoints
@@ -169,6 +173,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/categories', methods=['POST'])
     @requires_auth('post:categories')
@@ -184,7 +189,7 @@ def create_app(app):
             new_cat.insert()
 
             return jsonify({
-                'status_code': 200,
+                'status_code': 201,
                 'success': True,
                 'message': 'Created new category'
             })
@@ -192,6 +197,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/categories/<id>', methods=['PATCH'])
     @requires_auth('patch:categories')
@@ -216,6 +222,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/categories/<id>', methods=['DELETE'])
     @requires_auth('delete:categories')
@@ -239,6 +246,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     '''
     Chore-related endpoints
@@ -271,6 +279,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/chores', methods=['POST'])
     @requires_auth('post:chores')
@@ -297,7 +306,7 @@ def create_app(app):
             new_chore.insert()
 
             return jsonify({
-                'status_code': 200,
+                'status_code': 201,
                 'success': True,
                 'message': 'Created new chore'
             })
@@ -305,6 +314,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/chores/<id>', methods=['PATCH'])
     @requires_auth('patch:chores')
@@ -335,6 +345,7 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
 
     @app.route('/chores/<id>', methods=['DELETE'])
     @requires_auth('delete:chores')
@@ -358,5 +369,34 @@ def create_app(app):
         except Exception as e:
             print(e)
             error = True
+            abort(422)
+
+    '''
+    Erorr handlers
+        '''
+
+    @app.errorhandler(404)
+    def not_found_error(error):
+        return jsonify({
+            'success': False,
+            'status_code': 404,
+            'message': 'Resource not found'
+        }), 404
+
+    @app.errorhandler(422)
+    def not_found_error(error):
+        return jsonify({
+            'success': False,
+            'status_code': 422,
+            'message': 'Your request could not be processed'
+        }), 422
+
+    @app.errorhandler(AuthError)
+    def auth_error(error):
+        return jsonify({
+            "success": False,
+            "error": error.status_code,
+            "message": error.error['description']
+        }), error.status_code
 
     return app
