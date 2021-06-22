@@ -1,0 +1,5 @@
+# Database variables
+DB_HOST='localhost:5432'
+DB_USER='udacity'
+DB_PWD=''
+DB_NAME='chores_test'
