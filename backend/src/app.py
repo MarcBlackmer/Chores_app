@@ -80,7 +80,7 @@ def create_app(app):
             user_acct.insert()
 
             return jsonify({
-                'status_code': 201,
+                'status_code': 200,
                 'success': True,
                 'message': 'User created'
             })
