@@ -4,13 +4,13 @@
 
 If you're a child or former child with children, you have more than likely experienced the arguments, disagreements, miscommunications, failures of memory, and flat out non-truth telling that goes with trying to get chores done. As a former child with children, I have experienced all of the of above from both sides of the proverbial table.
 
-So, rather than continue the cycle of arguing, disagreeing, miscommunicating, failing to remember, and living in parallel realities between teendom and adultdom - and because I needed a final project for my Udacity course - I decided to create this app.
+So, rather than continue the cycle of arguing, disagreeing, miscommunication, failing to remember, and living in parallel realities between teendom and adultdom - and because I needed a final project for my Udacity course - I decided to create this app.
 
 ## Technical bits: Overview
 
 The app is currently only usable via API without a front end. It's written in Python and uses Flask with a PostgreSQL backend.
 
-There are two permissions-based roles - admin and user - using Auth0 for authentication. Where this app is currently being posted for a final project, the details on creating an Auth0 account and generating tokens, is currently out of scope for this document.
+There are two permissions-based roles - admin and user - using Auth0 for OAuth authentication and authorization. Where this app is currently being posted for a final project, the details on creating an Auth0 account and generating tokens, is currently out of scope for this document. You do have the option to remove all of the '\@requires_auth' decorators to remove the OAuth component, but then, that will give everyone the same privileges.
 
 Please note that I've developed this on a Mac, which comes with PostgreSQL already installed, and I have not tested running this on any other operating system, which may require you to explicitly install PostgreSQL first and may have differences in some of its related commands.
 
@@ -73,9 +73,7 @@ There are three endpoint types - users, categories, and chores - each of which h
 ### GET '/users'
 - **Returns** a dictionary of user names and user roles in key:value pairs.
 
-Example cURL statement: ```curl http://localhost:5150/users```
-
-Example results:
+Example:
 ```
 {
   "status_code": 200,
@@ -116,9 +114,7 @@ Categories are used to help group similar types of chores together such "Meal ch
 ### GET '/categories'
 - **Returns** a dictionary of category IDs and category names in a key:value pairs.
 
-Example cURL statement: ```curl http://localhost:5150/categories```
-
-Example results:
+Example:
 ```
 {
   "categories": [
@@ -153,9 +149,7 @@ Example results:
 ### GET '/chores'
 - **Returns** a dictionary of chores and the status of each in key:value pairs.
 
-Example cURL statement: ```curl http://localhost:5150/chores```
-
-Example results:
+Example:
 ```
 {
   "chores": {
