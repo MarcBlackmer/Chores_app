@@ -45,8 +45,13 @@ You can also set these values manually at run time, should you choose to do so.
 The script uses a PostgreSQL role called "udacity," which has the 'Create role' and 'Create DB' attributes in my development environment. You can create this role, a different one, or an existing one. Just be sure to modify the script to replace "udacity," as needed.
 ### Stand up the test database
 1. Start PostgreSQL: `pg_ctl -D /usr/local/var/postgres start`
+<<<<<<< HEAD
     1. Create a database role to own this database, as appropriate.
     1. Update the .sql script, accordingly.
+=======
+  - Create a database role to own this database, as appropriate.
+  - Update the .sql script, accordingly.
+>>>>>>> doc_tweaks
 1. Create the test database: `createdb -O udacity chores_test` If you use a different database name in the .env file, use that name here instead of 'chores_test'.
 1. Use the SQL script to import the test data: `psql chores_test < test_db.sql`
 
