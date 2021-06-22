@@ -47,7 +47,7 @@ You can also set these values manually at run time, should you choose to do so.
 2. Create the test database: `createdb chores_test` If you use a different database name in the .env file, use that name here instead of 'chores_test'.
 3. Use the SQL script to import the test data: `psql chores_test < test_db.sql`
 
-You can always start over by deleting the database with 'deletedb chores_test' and then repeating steps 2 and 3.
+You can always start over by deleting the database with `deletedb chores_test` and then repeating steps 2 and 3.
 
 ### Start the app
 1. Create a Python virtual environment: `python3 -m virtualenv env`
