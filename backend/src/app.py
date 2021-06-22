@@ -158,7 +158,8 @@ def create_app(app):
                 return jsonify({
                     'status_code': 200,
                     'success': True,
-                    'categories': [category.cat_name for category in categories]
+                    'categories': [category.cat_name for
+                                   category in categories]
                 })
             else:
                 abort(404)
