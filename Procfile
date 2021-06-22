@@ -1,1 +1,1 @@
-web: python app:chores_app
+web: python app.py
