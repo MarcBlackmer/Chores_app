@@ -1,4 +1,5 @@
-# The Chores App: An app to sow familial peace and harmony
+# The Chores App
+## An app to sow familial peace and harmony
 
 ## Why?
 
@@ -42,17 +43,17 @@ You can also set these values manually at run time, should you choose to do so.
 
 ## Running the app for testing
 ### Stand up the test database
-1. Start PostgreSQL: 'pg_ctl -D /usr/local/var/postgres start'
-2. Create the test database: 'createdb chores_test' If you use a different database name in the .env file, use that name here instead of 'chores_test'.
-3. Use the SQL script to import the test data: 'psql chores_test < test_db.sql'
+1. Start PostgreSQL: `pg_ctl -D /usr/local/var/postgres start`
+2. Create the test database: `createdb chores_test` If you use a different database name in the .env file, use that name here instead of 'chores_test'.
+3. Use the SQL script to import the test data: `psql chores_test < test_db.sql`
 
 You can always start over by deleting the database with 'deletedb chores_test' and then repeating steps 2 and 3.
 
 ### Start the app
-1. Create a Python virtual environment: 'python3 -m virtualenv env'
-2. Activate the virtual environment: 'source env/bin/activate'
-3. Install the required Python modules (first run only): 'pip3 install -r requirements.txt'
-4. Start Flask: 'flask run'
+1. Create a Python virtual environment: `python3 -m virtualenv env`
+2. Activate the virtual environment: `source env/bin/activate`
+3. Install the required Python modules (first run only): `pip3 install -r requirements.txt`
+4. Start Flask: `flask run`
 
 The app will be available on http://localhost using the port you specify in the .flaskenv file. My instance is set up on port 5150, so the URL is http://localhost:5150. This port value is set in the .flaskenv file.
 
@@ -61,8 +62,8 @@ To run the app locally, it's pretty straightforward.
 
 1. Update the .env file with your production values
 2. Start PostgreSQL
-3. Create the production database: 'createdb chores'
-4. Migrate to the backend/src/ directory and run 'flask db init'
+3. Create the production database: `createdb chores`
+4. Migrate to the backend/src/ directory and run `flask db init`
 5. Follow steps 1, 2, and 4 as indicated in "Start the app" above
 
 # The API endpoints
