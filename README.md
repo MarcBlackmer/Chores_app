@@ -42,7 +42,7 @@ You can also set these values manually at run time, should you choose to do so.
 
 ## Running the app for testing
 ### Stand up the test database
-1. Start PostgreSQL
+1. Start PostgreSQL: 'pg_ctl -D /usr/local/var/postgres start'
 2. Create the test database: 'createdb chores_test' If you use a different database name in the .env file, use that name here instead of 'chores_test'.
 3. Use the SQL script to import the test data: 'psql chores_test < test_db.sql'
 
@@ -72,6 +72,23 @@ There are three endpoint types - users, categories, and chores - each of which h
 ## Users endpoints
 ### GET '/users'
 - **Returns** a dictionary of user names and user roles in key:value pairs.
+
+Example cURL statement: ```curl http://localhost:5150/users```
+
+Example results:
+```
+{
+  "status_code": 200,
+  "success": true,
+  "users": {
+    "bob": "user",
+    "gary": "user",
+    "katie": "user",
+    "marc": "admin",
+    "tom": "admin"
+  }
+}
+```
 - A **status code** of 200 will be returned when the query returns results.
 - A **status code** of 404 will be returned if there are no records found, such as when the database is first created and the users table is not yet populated.
 
@@ -98,6 +115,21 @@ There are three endpoint types - users, categories, and chores - each of which h
 Categories are used to help group similar types of chores together such "Meal chores", which could include "Setting the table", "Clearing the table", and so on.
 ### GET '/categories'
 - **Returns** a dictionary of category IDs and category names in a key:value pairs.
+
+Example cURL statement: ```curl http://localhost:5150/categories```
+
+Example results:
+```
+{
+  "categories": [
+    "Dishes",
+    "cleaning",
+    "yard work"
+  ],
+  "status_code": 200,
+  "success": true
+}
+```
 - A **status code** of 200 is returned when results are successfully returned;
 - A **status code** of 404 is returned when no results are found, typically with a fresh, unpopulated table.
 
@@ -120,6 +152,21 @@ Categories are used to help group similar types of chores together such "Meal ch
 ## Chores endpoints
 ### GET '/chores'
 - **Returns** a dictionary of chores and the status of each in key:value pairs.
+
+Example cURL statement: ```curl http://localhost:5150/chores```
+
+Example results:
+```
+{
+  "chores": {
+    "Clean bedroom": "complete",
+    "Empty dishwasher": "incomplete"
+  },
+  "status_code": 200,
+  "success": true
+}
+```
+
 - A **status code** of 200 indicates that the values were returned successfully.
 - A **status code** of 404 indicates that no records were found, which typically indicates that no chores have yet been created.
 
