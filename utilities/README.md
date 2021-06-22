@@ -16,7 +16,7 @@ A couple of key reminders:
 1. Be sure to update the values for production, as appropriate.
 1. Note that there is no "." in front of the file name here. It _must_ be named\
  '.env' as it's a hidden file.
-1. It _must_ be located in the *backend/src/database/* directory.
+1. It _must_ be located in the **backend/src/database/** directory.
 
 ## .flaskenv file
 This file is used by Flask and there are several variables that you can declare\
@@ -26,7 +26,7 @@ This file is used by Flask and there are several variables that you can declare\
 
  Reminders:
  1. This also _must_ be renamed '.flaskenv' as it, too, is a hidden file.
- 1. It _must_ be located in the *backend/src/* directory.
+ 1. It _must_ be located in the **backend/src/** directory.
 
  ## test_db.sql
  As stated in the main README, use this file to populate your test database. \
