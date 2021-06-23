@@ -8,13 +8,17 @@ from dotenv import load_dotenv, find_dotenv
 from models import setup_db, db, Categories, Users, Chores
 from auth import AuthError, requires_auth
 
+APP_PORT = os.getenv('APP_PORT')
+APP_DEBUG = os.getenv('APP_DEBUG')
+APP_HOST = os.getenv('APP_HOST')
+
 
 def create_app(app):
     # Get the environment variables
     load_dotenv(find_dotenv())
 
     # Set up the app and create the database
-    app = Flask(__name__)
+
     setup_db(app)
 
     migrate = Migrate(app, db)
@@ -398,3 +402,11 @@ def create_app(app):
         }), error.status_code
 
     return app
+
+
+app = Flask(__name__)
+
+app = create_app(app)
+
+if __name__ == '__main__':
+    app.run(host=APP_HOST, port=APP_PORT, debug=APP_DEBUG)
