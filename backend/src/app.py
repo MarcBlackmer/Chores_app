@@ -6,7 +6,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv, find_dotenv
 
 from database.models import setup_db, db, Categories, Users, Chores
-from .auth.auth import AuthError, requires_auth
+from auth.auth import AuthError, requires_auth
 
 
 def create_app(app):
