@@ -2,8 +2,6 @@
 *.flaskenv*
 *pycache*
 ./env
-backend/src/migrations/
-frontend/node_modules/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
