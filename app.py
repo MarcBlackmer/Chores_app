@@ -398,3 +398,7 @@ def create_app(app):
         }), error.status_code
 
     return app
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5150, debug=True)
