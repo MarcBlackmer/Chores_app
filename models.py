@@ -6,6 +6,7 @@ import json
 
 load_dotenv(find_dotenv())
 
+APP_STATE = os.getenv('APP_STATE')
 DB_HOST = os.getenv('DB_HOST')
 DB_USER = os.getenv('DB_USER')
 DB_PWD = os.getenv('DB_PWD')
@@ -13,13 +14,18 @@ DB_NAME = os.getenv('DB_NAME')
 DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
 DATABASE_URL = os.getenv('DATABASE_URL')
 
-if DATABASE_URL.startswith("postgres://"):
+if APP_STATE = 'dev':
+    database_path = DB_PATH
+else:
+    database_path = DATABASE_URL
+
+    if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 db = SQLAlchemy()
 
 
-def setup_db(app, database_path=DATABASE_URL):
+def setup_db(app, database_path):
     try:
         app.config['SQLALCHEMY_DATABASE_URI'] = database_path
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
