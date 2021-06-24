@@ -11,11 +11,12 @@ DB_USER = os.getenv('DB_USER')
 DB_PWD = os.getenv('DB_PWD')
 DB_NAME = os.getenv('DB_NAME')
 DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
+DB_PATH_HEROKU = os.getenv('DB_PATH_HEROKU')
 
 db = SQLAlchemy()
 
 
-def setup_db(app, database_path=DB_PATH):
+def setup_db(app, database_path=DB_PATH_HEROKU):
     try:
         app.config['SQLALCHEMY_DATABASE_URI'] = database_path
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
