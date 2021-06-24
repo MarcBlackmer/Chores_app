@@ -19,7 +19,7 @@ DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 # Check to see if we'll use a local DB connection or Heroku
-if APP_STATE == 'dev':
+if APP_STATE == 'local':
     database_path = DB_PATH
 else:
     database_path = DATABASE_URL
