@@ -13,6 +13,9 @@ DB_NAME = os.getenv('DB_NAME')
 DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
 DATABASE_URL = os.getenv('DATABASE_URL')
 
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 db = SQLAlchemy()
 
 
