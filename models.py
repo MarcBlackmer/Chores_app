@@ -6,10 +6,10 @@ import json
 
 load_dotenv(find_dotenv())
 
-DB_HOST = os.getenv('DB_HOST', 'localhost:5432')
+DB_HOST = os.getenv('DB_HOST')
 DB_USER = os.getenv('DB_USER')
-DB_PWD = os.getenv('DB_PWD', '')
-DB_NAME = os.getenv('DB_NAME', 'chores')
+DB_PWD = os.getenv('DB_PWD')
+DB_NAME = os.getenv('DB_NAME')
 DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
 
 db = SQLAlchemy()
