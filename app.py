@@ -37,9 +37,11 @@ def create_app(app):
     def index():
         return render_template('pages/home.html')
 
-    ''' ----------------------
+    '''
+        ----------------------
         User-related endpoints
         ----------------------
+
         '''
 
     @app.route('/users', methods=['GET'])
@@ -144,9 +146,11 @@ def create_app(app):
             print(e)
             abort(404)
 
-    ''' --------------------------
+    '''
+        --------------------------
         Category-related endpoints
         --------------------------
+
         '''
 
     @app.route('/categories', methods=['GET'])
@@ -246,9 +250,11 @@ def create_app(app):
             print(e)
             abort(404)
 
-    ''' -----------------------
+    '''
+        -----------------------
         Chore-related endpoints
         -----------------------
+
         '''
 
     @app.route('/chores', methods=['GET'])
@@ -368,9 +374,11 @@ def create_app(app):
             print(e)
             abort(404)
 
-    ''' --------------
+    '''
+        --------------
         Error handlers
         --------------
+
         '''
 
     @app.errorhandler(404)
