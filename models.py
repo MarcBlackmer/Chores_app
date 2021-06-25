@@ -6,8 +6,12 @@ import json
 
 load_dotenv(find_dotenv())
 
-# App_state looks for "dev" to run locally, otherwise we will assume
-# the app is running in production on Heroku
+'''
+    App_state looks for "dev" to run locally, otherwise we will assume the app
+    is running in production on Heroku
+
+    '''
+
 APP_STATE = os.getenv('APP_STATE')
 DB_HOST = os.getenv('DB_HOST')
 DB_USER = os.getenv('DB_USER')
@@ -27,6 +31,7 @@ else:
     Heroku still uses 'postgres' in its connection strings, which has been
     deprecated by SQLAlchemy and is no longer supported. This check will
     correct the string as it is not editable within Heroku
+
     '''
 
 if database_path.startswith("postgres://"):
