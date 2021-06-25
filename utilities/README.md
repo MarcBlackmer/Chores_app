@@ -27,6 +27,5 @@ This file is used by Flask and there are several variables that you can declare 
 
  This doesn't need to be located in any specific directory.
 
- ## postman_collection_local.json
- ## postman_collection_Heroku.json
+ ## postman_collection_local.json/postman_collection_Heroku.json
 These are collections of endpoint tests for both the 'user' and 'admin' roles in conjunction with Auth0 Java web tokens (JWTs). As the names indicate, one is a collection of tests for a local instance of the app and the other is for the instance hosted on Heroku. The JWTs are stored as variables in each of the collections.
