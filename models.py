@@ -15,20 +15,23 @@ DB_PWD = os.getenv('DB_PWD')
 DB_NAME = os.getenv('DB_NAME')
 # DB_PATH refers to a local installation
 DB_PATH = 'postgresql://{}@{}/{}'.format(DB_USER, DB_HOST, DB_NAME, DB_PWD)
-# DATABASE_URL is the required variable name used by Heroku
-DATABASE_URL = os.getenv('DATABASE_URL')
 
 # Check to see if we'll use a local DB connection or Heroku
 if APP_STATE == 'local':
     database_path = DB_PATH
 else:
-    database_path = DATABASE_URL
+    # DATABASE_URL is the required variable name used by Heroku
+    database_path = os.getenv('DATABASE_URL')
 
-# Heroku still uses 'postgres' in its connection strings, which has been
-# deprecated by SQLAlchemy and is no longer supported. This check will correct
-# the string as it is not editable within Heroku
+'''
+    Heroku still uses 'postgres' in its connection strings, which has been
+    deprecated by SQLAlchemy and is no longer supported. This check will
+    correct the string as it is not editable within Heroku
+    '''
+
 if database_path.startswith("postgres://"):
     database_path = database_path.replace("postgres://", "postgresql://", 1)
+
 
 db = SQLAlchemy()
 
