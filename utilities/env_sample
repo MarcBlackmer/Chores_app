@@ -1,5 +1,16 @@
+# Application variables
+APP_STATE='local'
+APP_PORT='5150'
+APP_DEBUG='True'
+APP_HOST='localhost'
+
 # Database variables
 DB_HOST='localhost:5432'
 DB_USER='udacity'
 DB_PWD=''
-DB_NAME='chores_test'
+DB_NAME='chores'
+
+# Auth variables
+AUTH0_DOMAIN='blackmer.us.auth0.com'
+ALGORITHMS=['RS256']
+API_AUDIENCE='http://localhost:5150'

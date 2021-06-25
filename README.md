@@ -9,64 +9,84 @@ So, rather than continue the cycle of arguing, disagreeing, miscommunication, fa
 
 ## Technical bits: Overview
 
-The app is currently only usable via API without a front end. It's written in Python and uses Flask with a PostgreSQL backend.
+The app is currently only usable via API without a front end. You can use cURL and/or Postman, for example, to access the API endpoints, and there is a package of Postman collections in the utilities directory. The app can be run locally, and it's also hosted on Heroku at https://chorez-app.herokuapp.com. Note the spelling of "chorez" vs. "chores." It's written in Python, uses Flask when run locally and gunicorn on Heroku, and uses a PostgreSQL backend in both cases.
 
 There are two permissions-based roles - admin and user - using Auth0 for OAuth authentication and authorization. Where this app is currently being posted for a final project, the details on creating an Auth0 account and generating tokens, is currently out of scope for this document. You do have the option to remove all of the '\@requires_auth' decorators to remove the OAuth component, but then, that will give everyone the same privileges.
 
-Please note that I've developed this on a Mac, which comes with PostgreSQL already installed, and I have not tested running this on any other operating system, which may require you to explicitly install PostgreSQL first and may have differences in some of its related commands.
+Please note that I've developed this on a Mac, which comes with PostgreSQL already installed, and I have not tested running this on any other operating system. Other operating systems may require you to explicitly install PostgreSQL first and may have differences in some of its related commands.
 
 ### Technical bits: Requirements
 #### Variables files
-There are two variables files that you will need to create in order to use the app:
+There are two variables files that you will need to create in order to use the app, and there are two sample files in the utilities directory:
 
-- A .env file in the backend/src/database directory
-- A .flaskenv file in the backend/src directory
+- A .env file in the app root directory
+- A .flaskenv file in the app root directory
+
+Just modify those two files, as needed; move to the app root directory; and be sure to add a "." to the beginning of the file names, as these are hidden files.
+
+Each of these are used when the app is running locally. Heroku provides config vars which act as environment variables in the local .env file, but in the Heroku space. There is no need for the .flaskenv variables in Heroku.
 
 ##### The .env file
-This file is used by models.py for the following database variables:
+This file is used by models.py and has three sections, as discussed below. These values are not used by Heroku. For Heroku, the appropriate values are populated by the config vars in Heroku.
 
-- DB_HOST
-- DB_USER
-- DB_PWD
-- DB_NAME
+###### Application variables
 
-By changing these values in the file, it will make it easier for you to change from your test environment to your production. We'll assume that the DB_NAME value for test is 'chores_test' and for production, the name is just 'chores'.
+- APP_STATE - This must be set to 'local' when running locally
+- APP_PORT - This is the port used when the app runs locally
+- APP_DEBUG - Set to 'True' when running in 'development' mode
+- APP_HOST - Set to 'localhost' to indicate that this will be running on your local machine.
+
+###### Database variables
+
+- DB_HOST - Set to 'localhost:5432' for a default, local PostgreSQL instance
+- DB_USER - Default is 'udacity', but can be set to whatever you like
+- DB_PWD - Can be set to '' to indicate no password when run in 'development' mode
+- DB_NAME - Default is 'chores_test' for dev and 'chores' for production
+
+###### Auth variables
+The app uses Auth0 for authentication and authorization using Java web tokens (JWTs).
+
+- AUTH0_DOMAIN
+- ALGORITHMS
+- API_AUDIENCE
 
 ##### The .flaskenv file
-This file is used by Flask when starting and uses the following variables:
+This file is used by Flask when starting and when run locally:
 
-- FLASK_APP
-- FLASK_ENV
-- FLASK_RUN_PORT
+- FLASK_APP - Set this to app.py
+- FLASK_ENV - This can be either 'development' or 'production'
+- FLASK_RUN_PORT - The default is 5150. \m/ EVH \m/
 
 You can also set these values manually at run time, should you choose to do so.
 
-## Running the app for testing
-The script uses a PostgreSQL role called "udacity," which has the 'Create role' and 'Create DB' attributes in my development environment. You can create this role, a different one, or an existing one. Just be sure to modify the script to replace "udacity," as needed.
+> If you change the value of the port, be sure to update {{url}} variable in the utilities/postman_collection_local.json file
+
+## Running the app locally for testing
+The script uses a PostgreSQL role called "udacity," which has the 'Create role' and 'Create DB' attributes in my development environment. You can create this role, create a different one, or use an existing one in your PostgreSQL instance. Just be sure to modify the script and .env file to replace "udacity," as needed.
 ### Stand up the test database
 1. Start PostgreSQL: `pg_ctl -D /usr/local/var/postgres start`
   - Create a database role to own this database, as appropriate.
-  - Update the .sql script, accordingly.
+  - Update the .sql script, if needed.
 1. Create the test database: `createdb -O udacity chores_test` If you use a different database name in the .env file, use that name here instead of 'chores_test'.
 1. Use the SQL script to import the test data: `psql chores_test < test_db.sql`
 
-You can always start over by deleting the database with `deletedb chores_test` and then repeating steps 2 and 3.
+You can always start over by deleting the database with `deletedb chores_test` and then repeat steps 2 and 3 to basically reset.
 
-### Start the app
+### Start the app locally
 1. Create a Python virtual environment: `python3 -m virtualenv env`
 2. Activate the virtual environment: `source env/bin/activate`
 3. Install the required Python modules (first run only): `pip3 install -r requirements.txt`
-4. Start Flask: `flask run`
+4. Start the app: `python3 app.py`
 
-The app will be available on http://localhost using the port you specify in the .flaskenv file. My instance is set up on port 5150, so the URL is http://localhost:5150. This port value is set in the .flaskenv file.
+The app will be available on http://localhost:[FLASK_RUN_PORT] using the port you specify in the .flaskenv file. My instance is set up on port 5150, so the URL is http://localhost:5150. This port value is set in the .flaskenv file.
 
-## Running the app
+## Running the app locally in production
 To run the app locally, it's pretty straightforward.
 
 1. Update the .env file with your production values
 2. Start PostgreSQL
 3. Create the production database: `createdb chores`
-4. Migrate to the backend/src/ directory and run `flask db init`
+4. Migrate to the app root directory and run `flask db init`
 5. Follow steps 1, 2, and 4 as indicated in "Start the app" above
 
 # The API endpoints

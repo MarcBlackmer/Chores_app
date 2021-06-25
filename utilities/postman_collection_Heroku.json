@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "963a0532-d2ca-42ea-8e71-4e1a63b26dd5",
-		"name": "Chores App",
+		"_postman_id": "2b801eec-f24e-4db3-b3c6-4b0d8ba0bd9e",
+		"name": "Chorez_App_Heroku",
+		"description": "This collection is used to test API endpoint functionality of the Chores app (Chorez-app) on Heroku. \n\nJava web tokens (JWTs) have been stored as collection variables as has the URL for the app on Heroku. Testing should only require running each of the requests.\n\nPlease see the [project documentation on GitHub](https://github.com/MarcBlackmer/Chores_app) for complete details and instructions.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -847,7 +848,15 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "http://localhost:5150"
+			"value": "https://chorez-app.herokuapp.com/"
+		},
+		{
+			"key": "Chores_admin_auth",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjE3RVJ1QjZuLVk0Z3hHelU3cE40SyJ9.eyJpc3MiOiJodHRwczovL2JsYWNrbWVyLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGM3ZmMwZmQwMmY2NTAwNjk1YzI5NDAiLCJhdWQiOiJodHRwczovL2Nob3Jlei1hcHAuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE2MjQ1NjM4MjYsImV4cCI6MTYyNDY1MDIyNiwiYXpwIjoiQ0ZNYXFqVDQ4M1BOVXFiNlhsdDdhcWR1UnJYNmJMYWwiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjYXRlZ29yaWVzIiwiZGVsZXRlOmNob3JlcyIsImRlbGV0ZTp1c2VycyIsImdldDpjYXRlZ29yaWVzIiwiZ2V0OmNob3JlcyIsImdldDp1c2VycyIsInBhdGNoOmNhdGVnb3JpZXMiLCJwYXRjaDpjaG9yZXMiLCJwYXRjaDp1c2VycyIsInBvc3Q6Y2F0ZWdvcmllcyIsInBvc3Q6Y2hvcmVzIiwicG9zdDp1c2VycyJdfQ.XvQ0A6MesJDJYInT_sQ27as7N8fQ55jsU9SrmbRCy8ylGHn45x7BoAmz15htVXCNOdqtwdM2VSDZKsdgyNQH2azm6twqgQNLME89LvJsj5fYnQM7Hwz7z8Kyyk5Dc9JBMhAHvkkVy2byynE7UY4WmzOdSZiuubKIBFlZQHTVp35ZrHrTBcLpNRO4az-QxF4IQ_D0S7nsI_MmLdpgrGCJ2r2C_qdX2xLOVjwyCLWaIwwzQawzq1989yXrGIAMfNHBk5ZM2rQONlKidBTndFU744-wwgo1IBX3DIl53tBP9b3vRLs4FHbRNkCfHe4gzdTFbYyNdti5tNNAqlhATKEllA"
+		},
+		{
+			"key": "Chores_user_auth",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjE3RVJ1QjZuLVk0Z3hHelU3cE40SyJ9.eyJpc3MiOiJodHRwczovL2JsYWNrbWVyLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGM3ZmM3OGVkNmZjYjAwNjk0OTJjZmEiLCJhdWQiOiJodHRwczovL2Nob3Jlei1hcHAuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE2MjQ1NjM5NTEsImV4cCI6MTYyNDY1MDM1MSwiYXpwIjoiQ0ZNYXFqVDQ4M1BOVXFiNlhsdDdhcWR1UnJYNmJMYWwiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpjaG9yZXMiLCJwYXRjaDpjaG9yZXMiXX0.RDJpTUxaBc8jZwYur7S66kvnspQoOjpE5HKDBB_F_zMTUZoAWzh0ZmND16Dbp3lTVluOrUTCUg4TwIk3iAZUxl2C8-WOTXCL8AVs0BNooXuUU6_U7kBCPSjXh2KR3Jdjw8IG4SO9Mjj5CYsIYTh2yr325suXEpB0bZcqryEjh3_n6oS5BJHFDnR0CS10ju6Sfh98JRAWgRSPLx_BtxCVbf-2s59iHiArA-eW8i4bNZoslSIZw1JWcwYl7QWuls-4PhxHHdF5vhehIq7dGrRYcCQiV0iuKnQ8WQ2LFH_-AR3n9lMifF_TX1EibZR8XJgFdlJyoCst1eUObfSy81O5CQ"
 		}
 	]
 }

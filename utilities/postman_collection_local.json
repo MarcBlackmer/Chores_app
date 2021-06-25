@@ -1,0 +1,862 @@
+{
+	"info": {
+		"_postman_id": "963a0532-d2ca-42ea-8e71-4e1a63b26dd5",
+		"name": "Chores_App_Local",
+		"description": "This collection is used to test API endpoint functionality of the Chores app on your local machine. \n\nJava web tokens (JWTs) have been stored as collection variables as has the local URL and port. Testing should only require running each of the requests.\n\nPlease see the [project documentation on GitHub](https://github.com/MarcBlackmer/Chores_app) for complete details and instructions.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Privs Requests",
+			"item": [
+				{
+					"name": "USERS",
+					"item": [
+						{
+							"name": "Users - GET (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - POST (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"gary\",\n    \"user_role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - PATCH (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"tim\",\n    \"user_role\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - DELETE (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CATEGORIES",
+					"item": [
+						{
+							"name": "Categories - GET (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - POST (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cat_name\": \"pet care\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - PATCH (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cat_name\": \"pets\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/categories/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - DELETE (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/categories/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CHORES",
+					"item": [
+						{
+							"name": "Chores - GET (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/chores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - POST (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"chore_name\": \"Sweep garage\",\n    \"recurrence\": \"Weekly\",\n    \"category_id\": \"3\",\n    \"user_id\": 3,\n    \"status\": \"incomplete\",\n    \"points\": \"10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/chores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - PATCH (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"chore_name\": \"Clean bedroom\",\n    \"recurrence\": \"Daily\",\n    \"category_id\": \"3\",\n    \"user_id\": 3,\n    \"status\": \"complete\",\n    \"points\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/chores/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - DELETE (user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_user_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/chores/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin Privs Requests",
+			"item": [
+				{
+					"name": "USERS",
+					"item": [
+						{
+							"name": "Users - GET (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - POST (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"sally\",\n    \"user_role\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - PATCH (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"sally\",\n    \"user_role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users - DELETE (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CATEGORIES",
+					"item": [
+						{
+							"name": "Categories - GET (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - POST (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cat_name\": \"cars\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - PATCH (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cat_name\": \"car care\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/categories/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories - DELETE (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/categories/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CHORES",
+					"item": [
+						{
+							"name": "Chores - GET (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/chores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - POST (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"chore_name\": \"Sweep garage\",\n    \"recurrence\": \"Weekly\",\n    \"category_id\": \"3\",\n    \"user_id\": 3,\n    \"status\": \"incomplete\",\n    \"points\": \"10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/chores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - PATCH (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"chore_name\": \"Clean bedroom\",\n    \"recurrence\": \"Daily\",\n    \"category_id\": \"3\",\n    \"user_id\": 3,\n    \"status\": \"incomplete\",\n    \"points\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/chores/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chores - DELETE (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Chores_admin_auth}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/chores/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"chores",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjE3RVJ1QjZuLVk0Z3hHelU3cE40SyJ9.eyJpc3MiOiJodHRwczovL2JsYWNrbWVyLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGM3ZmM3OGVkNmZjYjAwNjk0OTJjZmEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUxNTAiLCJpYXQiOjE2MjM3Nzc0NzEsImV4cCI6MTYyMzc4NDY3MSwiYXpwIjoiM2F6R0NBM2FoQmlaWW96anFmQ2xjdndFNnRETzhFaFciLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbXX0.hcyI4eOH3EzYQGaurVd-VRKPzQ45wi6DNke5mW5L9eAELHvuf1He-ITQvR41lQS0b1Skb72NGYgcy-SHBjM9fO-mfCclVJC4b_QP0QB2HMC_csnSWLcHiep_1PNY4ooerhhpEYfcYGUeg-Rl5YdmpRRIOqaqA3HenkzlSn8ggxGB9p8JOoa0CtHK4gQYPcEt1eVb2NTPJOWE-BfRyB5xJu65MYQzr6-4asiyFiCGEh6LP39MOwTOKMTusldYSqPN8QMijYiUG6nl1__zYRYsuRFaEzWyx2K2m-OmfsUW4eaZaXjz6ozR3L9E3Ei8C1KtfbDhQ4WypfU63d0RANcs8A",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5150"
+		},
+		{
+			"key": "Chores_admin_auth",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjE3RVJ1QjZuLVk0Z3hHelU3cE40SyJ9.eyJpc3MiOiJodHRwczovL2JsYWNrbWVyLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGM3ZmMwZmQwMmY2NTAwNjk1YzI5NDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUxNTAiLCJpYXQiOjE2MjQ0NjQxNTIsImV4cCI6MTYyNDU1MDU1MiwiYXpwIjoiM2F6R0NBM2FoQmlaWW96anFmQ2xjdndFNnRETzhFaFciLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjYXRlZ29yaWVzIiwiZGVsZXRlOmNob3JlcyIsImRlbGV0ZTp1c2VycyIsImdldDpjYXRlZ29yaWVzIiwiZ2V0OmNob3JlcyIsImdldDp1c2VycyIsInBhdGNoOmNhdGVnb3JpZXMiLCJwYXRjaDpjaG9yZXMiLCJwYXRjaDp1c2VycyIsInBvc3Q6Y2F0ZWdvcmllcyIsInBvc3Q6Y2hvcmVzIiwicG9zdDp1c2VycyJdfQ.O2f2pza_F1kfIGmX31e7TpqpKBqjZdEv412DbQb_mTwIJ6TAo2e3Nd_21q_3MOuAdSbO71THJR610vWAeEzbOfWQhzam2ilPOT62i_VVemBQNYhzIbGcNaAhG60MTb1j8So8Na9HAMecRM4aHsrjCp2Wl2oM2cb62kUZMAD_LsdofpEi-Z4ZEJ3u3YXJS61TvpOE_Gb1Ajr2zw2G-tW0mtAeyMJfJYyLO0VYRSM-yGqbcox9Ozy1R8eArPLRclJREwn6_qWV_VeO3pn17KY3odjYkskcxjs8gaY1N_yfxI39eQaSYtv_NszunF6wLrsQWR_zDMm2IFuPGM-X0YBwqQ"
+		},
+		{
+			"key": "Chores_user_auth",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjE3RVJ1QjZuLVk0Z3hHelU3cE40SyJ9.eyJpc3MiOiJodHRwczovL2JsYWNrbWVyLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGM3ZmM3OGVkNmZjYjAwNjk0OTJjZmEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUxNTAiLCJpYXQiOjE2MjQ0NTI4OTksImV4cCI6MTYyNDUzOTI5OSwiYXpwIjoiM2F6R0NBM2FoQmlaWW96anFmQ2xjdndFNnRETzhFaFciLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpjaG9yZXMiLCJwYXRjaDpjaG9yZXMiXX0.sXRHdLG_O2ejuHt7ldDLiQjz13SlsEBUR8zu1BZBJz5TUKlak_G4vgeH-cDl0DXgBvMyJrRYO_F4Kc-Ll3PXN5lf3yFzp3Ekb0xZA87NxzWT67g21DqFHfVy_KuV6DZXezGepeAF5BOy1uJ4H74J9Xqf3u5WQz_mW3Cmetd4HCAiYWceXDWb6NFgdp4A5W3ANPbJx2e-aEN17nB4zEPMwqVYo_teWGXg1pPm6QjlYlH-ZdiNon3FG_Vk2Rh5r-do5haFy5w0eA-eaSRi_3gHG4O01b1IPleMiCsRq8gH3VrSwFLn4g5LMIIBenBEARoPna4E6qvIpkvAifJQNzn4SA"
+		}
+	]
+}
