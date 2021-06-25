@@ -93,6 +93,39 @@ To run the app locally, it's pretty straightforward.
 ## Overview
 There are three endpoint types - users, categories, and chores - each of which has four allowed methods - GET, POST, PATCH, and DELETE. Access to these is controlled by the user roles. Admins have access to all endpoints and methods, while users may only use the GET and PATCH methods for the chores endpoints.
 
+## Permissions
+The specific Auth0 permissions are:
+
+get:users
+post:users
+patch:users
+delete:users
+
+get:categories
+post:categories
+patch:categories
+delete:categories
+
+get:chores
+post:chores
+patch:chores
+delete:chores
+
+## Roles
+Two roles were created for use with this application - admin and user. The admin has permissions to execute the following methods for _all_ endpoints:
+
+- GET
+- POST
+- PATCH
+- DELETE
+
+The user role on has the following permissions for the _chores_ endpoint:
+
+- GET (get:chores)
+- PATCH (patch:chores)
+
+Attempts by accounts with the user role to execute against any other methods for this or any other endpoint should return a 403 error.
+
 ## Users endpoints
 ### GET '/users'
 - **Returns** a dictionary of user names and user roles in key:value pairs.
